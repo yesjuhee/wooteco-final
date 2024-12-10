@@ -41,11 +41,11 @@ public class Products {
     }
 
     public Product getProduct(String productName) {
-        validate(productName);
+        validateProductName(productName);
         return products.get(productName);
     }
 
-    private void validate(String productName) {
+    public void validateProductName(String productName) {
         if (!products.containsKey(productName)) {
             throw new IllegalArgumentException(PRODUCT_NOT_EXIST.getFormatMessage());
         }

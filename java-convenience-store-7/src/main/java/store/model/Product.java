@@ -1,5 +1,7 @@
 package store.model;
 
+import static store.common.enums.ErrorMessage.OUT_OF_STOCK;
+
 public class Product {
     private final String name;
     private final int price;
@@ -19,6 +21,12 @@ public class Product {
     public void updatePromotionInfo(String promotionName, String promotionQuantity, Promotions promotions) {
         this.promotion = promotions.findPromotionByName(promotionName);
         this.promotionQuantity = Integer.parseInt(promotionQuantity);
+    }
+
+    public void validatePurchaseQuantity(Integer quantity) {
+        if (quantity > baseQuantity + promotionQuantity) {
+            throw new IllegalArgumentException(OUT_OF_STOCK.getFormatMessage());
+        }
     }
 
     public String getName() {

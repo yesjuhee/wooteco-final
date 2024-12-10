@@ -11,7 +11,13 @@ public class Purchases {
         for (Entry<String, Integer> purchase : input.entrySet()) {
             String productName = purchase.getKey();
             Integer quantity = purchase.getValue();
+            validate(productName, quantity, products);
             purchases.put(products.getProduct(productName), quantity);
         }
+    }
+
+    private void validate(String productName, Integer quantity, Products products) {
+        Product product = products.getProduct(productName);
+        product.validatePurchaseQuantity(quantity);
     }
 }
