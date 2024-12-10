@@ -20,7 +20,7 @@ public class Application {
         do {
             products = stockInfoController.loadProductFile();
             stockInfoController.displayStockInfo(products);
-            Purchases purchases = purchaseController.purchase();
+            Purchases purchases = purchaseController.purchase(products);
             FreeProducts freeProducts = yesOrNoQuestionController.addPromotionProduct(purchases);
             yesOrNoQuestionController.promotionOutOfStock(products, purchases);
             Membership membership = yesOrNoQuestionController.membership(purchases, freeProducts);

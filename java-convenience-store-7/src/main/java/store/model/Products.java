@@ -38,4 +38,8 @@ public class Products {
     public List<Product> getProducts() {
         return new ArrayList<>(products.values());
     }
+
+    public Product getProduct(String productName) {
+        return products.get(productName);
+    }
 }
