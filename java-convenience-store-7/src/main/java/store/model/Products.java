@@ -5,6 +5,7 @@ import static store.common.constant.ProductFile.NULL;
 import static store.common.constant.ProductFile.PRICE;
 import static store.common.constant.ProductFile.PROMOTION;
 import static store.common.constant.ProductFile.QUANTITY;
+import static store.common.enums.ErrorMessage.PRODUCT_NOT_EXIST;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,6 +41,13 @@ public class Products {
     }
 
     public Product getProduct(String productName) {
+        validate(productName);
         return products.get(productName);
+    }
+
+    private void validate(String productName) {
+        if (!products.containsKey(productName)) {
+            throw new IllegalArgumentException(PRODUCT_NOT_EXIST.getFormatMessage());
+        }
     }
 }
