@@ -14,11 +14,10 @@ public class Application {
     private final PurchaseController purchaseController = new PurchaseController();
     private final ReceiptController receiptController = new ReceiptController();
     private final YesOrNoQuestionController yesOrNoQuestionController = new YesOrNoQuestionController();
-    private Products products;
 
     public void run() {
         do {
-            products = stockInfoController.loadProductFile();
+            Products products = stockInfoController.loadProductFile();
             stockInfoController.displayStockInfo(products);
             Purchases purchases = purchaseController.purchase(products);
             FreeProducts freeProducts = yesOrNoQuestionController.addPromotionProduct(purchases);

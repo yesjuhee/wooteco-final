@@ -6,11 +6,8 @@ import store.common.constant.PromotionFile;
 import store.common.utils.FileUtils;
 import store.model.Products;
 import store.model.Purchases;
-import store.view.StockInfoView;
 
-public class StockInfoController {
-    private final StockInfoView stockInfoView = new StockInfoView();
-
+public class StockInfoController extends BaseController {
     public Products loadProductFile() {
         List<List<String>> productData = FileUtils.readCSV(ProductFile.PATH);
         List<List<String>> promotionData = FileUtils.readCSV(PromotionFile.PATH);
