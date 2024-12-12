@@ -38,4 +38,8 @@ public class OncallMonth {
         }
         return false;
     }
+
+    public int getLastDate() {
+        return month.getLastDate();
+    }
 }

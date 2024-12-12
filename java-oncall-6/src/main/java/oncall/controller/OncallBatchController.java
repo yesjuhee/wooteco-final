@@ -23,6 +23,6 @@ public class OncallBatchController extends BaseController {
     }
 
     public void handleConsecutiveWorkers(OncallBatch oncallBatch, OncallMonth oncallMonth) {
-        System.out.println("handleConsecutiveWorkers");
+        oncallBatch.handleConsecutiveWorkers(oncallMonth);
     }
 }
