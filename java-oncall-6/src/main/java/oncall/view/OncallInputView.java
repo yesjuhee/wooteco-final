@@ -4,6 +4,7 @@ import static oncall.constant.Constants.DELIMITER;
 import static oncall.constant.Constants.MAX_WORKER_COUNT;
 import static oncall.constant.Constants.MAX_WORKER_NAME_LENGTH;
 import static oncall.constant.Constants.MIN_WORKER_COUNT;
+import static oncall.enums.ErrorMessage.INVALID_WORKER_BATCH;
 import static oncall.enums.ErrorMessage.INVALID_WORKER_NAME_EMPTY;
 import static oncall.enums.ErrorMessage.INVALID_WORKER_NAME_LENGTH;
 import static oncall.enums.OutputMessage.INPUT_HOLIDAY_WORKERS;
@@ -11,6 +12,7 @@ import static oncall.enums.OutputMessage.INPUT_WEEKDAY_WORKERS;
 
 import camp.nextstep.edu.missionutils.Console;
 import java.util.Arrays;
+import java.util.HashSet;
 import java.util.List;
 import oncall.enums.ErrorMessage;
 
@@ -41,6 +43,13 @@ public class OncallInputView {
         validateWorkerNameCount(workerNames);
         workerNames.forEach(this::validateWorkerNameLength);
         workerNames.forEach(this::validateWorkerNameExist);
+        validateDuplicateName(workerNames);
+    }
+
+    private void validateDuplicateName(List<String> workerNames) {
+        if (workerNames.size() != new HashSet<>(workerNames).size()) {
+            throw new IllegalArgumentException(INVALID_WORKER_BATCH.getMessage());
+        }
     }
 
 
