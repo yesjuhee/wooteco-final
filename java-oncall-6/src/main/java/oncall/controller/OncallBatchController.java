@@ -8,8 +8,9 @@ import oncall.model.WeekdayWorkers;
 
 public class OncallBatchController extends BaseController {
     public void readWorkers(WeekdayWorkers weekdayWorkers, HolidayWorkers holidayWorkers) {
-        List<String> weekdayWorkerInput = oncallInputView.readWeekdayWorkers();
-        List<String> holidayWorkerInput = oncallInputView.readHolidayWorkers();
+        List<List<String>> workers = retryUntilSuccess(oncallInputView::readWorkers);
+        List<String> weekdayWorkerInput = workers.get(0);
+        List<String> holidayWorkerInput = workers.get(1);
     }
 
     public void batchWeekWorkers(WeekdayWorkers weekdayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
