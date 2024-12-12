@@ -1,5 +1,6 @@
 package oncall.controller;
 
+import java.util.List;
 import oncall.model.HolidayWorkers;
 import oncall.model.OncallBatch;
 import oncall.model.OncallMonth;
@@ -7,7 +8,8 @@ import oncall.model.WeekdayWorkers;
 
 public class OncallBatchController extends BaseController {
     public void readWorkers(WeekdayWorkers weekdayWorkers, HolidayWorkers holidayWorkers) {
-        System.out.println("readWorkers");
+        List<String> weekdayWorkerInput = oncallInputView.readWeekdayWorkers();
+        List<String> holidayWorkerInput = oncallInputView.readHolidayWorkers();
     }
 
     public void batchWeekWorkers(WeekdayWorkers weekdayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
