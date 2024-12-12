@@ -1,6 +1,7 @@
 package oncall.view;
 
 import static oncall.constant.Constants.DELIMITER;
+import static oncall.enums.ErrorMessage.INVALID_DAY;
 import static oncall.enums.ErrorMessage.INVALID_MONTH;
 import static oncall.enums.ErrorMessage.INVALID_MONTH_DAY;
 import static oncall.enums.OutputMessage.INPUT_MONTH_DAY;
@@ -11,6 +12,7 @@ import java.util.List;
 
 public class MonthDayInputView {
     private static final String POSITIVE_INTEGER_REGEX = "\\d+";
+    public static final String DAY_REGEX = "월|화|수|목|금|토|일";
 
     public List<String> readMonthDay() {
         System.out.printf(INPUT_MONTH_DAY.getMessage());
@@ -18,8 +20,17 @@ public class MonthDayInputView {
         List<String> inputList = Arrays.stream(input.split(DELIMITER)).map(String::trim).toList();
         validateSize(inputList);
         validateMonth(inputList.get(0));
-//        validateDay(inputList.get(1));
+        validateDay(inputList.get(1));
         return inputList;
+    }
+
+    private void validateDay(String dayInput) {
+        if (dayInput.length() > 1) {
+            throw new IllegalArgumentException(INVALID_DAY.getMessage());
+        }
+        if (!dayInput.matches(DAY_REGEX)) {
+            throw new IllegalArgumentException(INVALID_DAY.getMessage());
+        }
     }
 
     private void validateMonth(String inputMonth) {

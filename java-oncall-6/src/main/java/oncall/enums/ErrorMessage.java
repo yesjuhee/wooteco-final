@@ -3,7 +3,7 @@ package oncall.enums;
 
 public enum ErrorMessage {
     INVALID_MONTH("입력 월이 올바르지 않습니다."),
-    INVALID_DAY("“입력 요일이 올바르지 않습니다.”s"),
+    INVALID_DAY("“입력 요일이 올바르지 않습니다."),
     INVALID_MONTH_DAY("입력 월과 요일을 쉼표로 구분해서 입력해주세요"),
     INVALID_WORKER_COUNT("근무자 수는 최소 %d명, 최대 %d명입니다."),
     INVALID_WORKER_NAME_LENGTH("근무자 닉네임은 최대 %d자입니다."),
