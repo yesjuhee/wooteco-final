@@ -10,12 +10,12 @@ public class OncallBatchController extends BaseController {
         System.out.println("readWorkers");
     }
 
-    public void bathWeekWorkers(WeekdayWorkers weekdayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
-        System.out.println("bathWeekWorkers");
+    public void batchWeekWorkers(WeekdayWorkers weekdayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
+        System.out.println("batchWeekWorkers");
     }
 
-    public void bathHolidayWorkers(HolidayWorkers holidayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
-        System.out.println("bathHolidayWorkers");
+    public void batchHolidayWorkers(HolidayWorkers holidayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
+        System.out.println("batchHolidayWorkers");
     }
 
     public void handleConsecutiveWorkers(OncallBatch oncallBatch, OncallMonth oncallMonth) {

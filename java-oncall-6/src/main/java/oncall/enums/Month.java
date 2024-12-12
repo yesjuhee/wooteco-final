@@ -18,12 +18,12 @@ public enum Month {
     DEC(12, 31, List.of(25));
 
     private final int month;
-    private final int lastDay;
+    private final int lastDate;
     private final List<Integer> holiday;
 
-    Month(int month, int lastDay, List<Integer> holiday) {
+    Month(int month, int lastDate, List<Integer> holiday) {
         this.month = month;
-        this.lastDay = lastDay;
+        this.lastDate = lastDate;
         this.holiday = holiday;
     }
 
@@ -37,8 +37,8 @@ public enum Month {
         return month;
     }
 
-    public int getLastDay() {
-        return lastDay;
+    public int getLastDate() {
+        return lastDate;
     }
 
     public List<Integer> getHoliday() {

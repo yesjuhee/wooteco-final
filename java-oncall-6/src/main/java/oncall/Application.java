@@ -18,10 +18,9 @@ public class Application {
 
     public void run() {
         OncallMonth oncallMonth = monthDayController.readMonthDay();
-        monthDayController.saveOncallMonthInfo(oncallMonth);
         oncallBatchController.readWorkers(weekdayWorkers, holidayWorkers);
-        oncallBatchController.bathWeekWorkers(weekdayWorkers, oncallMonth, oncallBatch);
-        oncallBatchController.bathHolidayWorkers(holidayWorkers, oncallMonth, oncallBatch);
+        oncallBatchController.batchWeekWorkers(weekdayWorkers, oncallMonth, oncallBatch);
+        oncallBatchController.batchHolidayWorkers(holidayWorkers, oncallMonth, oncallBatch);
         oncallBatchController.handleConsecutiveWorkers(oncallBatch, oncallMonth);
         outputController.displayResult(oncallBatch, oncallMonth);
     }

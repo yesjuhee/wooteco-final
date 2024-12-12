@@ -9,7 +9,7 @@ public enum Day {
     THU("목", 4, false),
     FRI("금", 5, false),
     SAT("토", 6, false),
-    SUN("일", 7, false);
+    SUN("일", 0, false);
 
     private final String name;
     private final int order;
@@ -21,9 +21,15 @@ public enum Day {
         this.isHoliday = isHoliday;
     }
 
-    public static Day getDayByOrder(String day) {
+    public static Day getDayByName(String day) {
         return Arrays.stream(Day.values())
                 .filter(d -> d.getName().equals(day))
+                .findAny().get();
+    }
+
+    public static Day getDayByOrder(int order) {
+        return Arrays.stream(Day.values())
+                .filter(d -> d.getOrder() == order)
                 .findAny().get();
     }
 
@@ -37,5 +43,10 @@ public enum Day {
 
     public boolean isHoliday() {
         return isHoliday;
+    }
+
+    public Day getNextDay() {
+        int nextDayOrder = (order + 1) % 7;
+        return getDayByOrder(nextDayOrder);
     }
 }

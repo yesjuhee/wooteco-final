@@ -8,8 +8,4 @@ public class MonthDayController extends BaseController {
         List<String> monthDayInput = retryUntilSuccess(monthDayInputView::readMonthDay);
         return new OncallMonth(monthDayInput);
     }
-
-    public void saveOncallMonthInfo(OncallMonth oncallMonth) {
-        System.out.println("saveOncallMonthInfo");
-    }
 }
