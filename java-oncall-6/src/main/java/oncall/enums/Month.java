@@ -44,4 +44,8 @@ public enum Month {
     public List<Integer> getHoliday() {
         return holiday;
     }
+
+    public boolean isSpecialHoliday(Integer date) {
+        return holiday.contains(date);
+    }
 }

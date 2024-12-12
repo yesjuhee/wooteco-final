@@ -8,8 +8,8 @@ public enum Day {
     WED("수", 3, false),
     THU("목", 4, false),
     FRI("금", 5, false),
-    SAT("토", 6, false),
-    SUN("일", 0, false);
+    SAT("토", 6, true),
+    SUN("일", 0, true);
 
     private final String name;
     private final int order;

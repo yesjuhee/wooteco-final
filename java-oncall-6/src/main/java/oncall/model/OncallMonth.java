@@ -26,4 +26,16 @@ public class OncallMonth {
             day = day.getNextDay();
         }
     }
+
+    public LinkedHashMap<Integer, Day> getDates() {
+        return dates;
+    }
+
+    public boolean isHoliday(Integer date) {
+        Day day = dates.get(date);
+        if (day.isHoliday() || month.isSpecialHoliday(date)) {
+            return true;
+        }
+        return false;
+    }
 }

@@ -15,7 +15,7 @@ public class OncallBatchController extends BaseController {
     }
 
     public void batchWeekWorkers(Workers weekdayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
-        oncallBatch.batchWeekdayWorker(weekdayWorkers);
+        oncallBatch.batchWeekdayWorker(weekdayWorkers, oncallMonth);
     }
 
     public void batchHolidayWorkers(Workers holidayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
