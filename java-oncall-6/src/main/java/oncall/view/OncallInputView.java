@@ -2,7 +2,10 @@ package oncall.view;
 
 import static oncall.constant.Constants.DELIMITER;
 import static oncall.constant.Constants.MAX_WORKER_COUNT;
+import static oncall.constant.Constants.MAX_WORKER_NAME_LENGTH;
 import static oncall.constant.Constants.MIN_WORKER_COUNT;
+import static oncall.enums.ErrorMessage.INVALID_WORKER_NAME_EMPTY;
+import static oncall.enums.ErrorMessage.INVALID_WORKER_NAME_LENGTH;
 import static oncall.enums.OutputMessage.INPUT_HOLIDAY_WORKERS;
 import static oncall.enums.OutputMessage.INPUT_WEEKDAY_WORKERS;
 
@@ -22,7 +25,7 @@ public class OncallInputView {
         System.out.printf(INPUT_WEEKDAY_WORKERS.getMessage());
         String input = Console.readLine();
         List<String> workerNames = Arrays.stream(input.split(DELIMITER)).map(String::trim).toList();
-        validateWorkerNameCount(workerNames);
+        validate(workerNames);
         return workerNames;
     }
 
@@ -30,9 +33,16 @@ public class OncallInputView {
         System.out.printf(INPUT_HOLIDAY_WORKERS.getMessage());
         String input = Console.readLine();
         List<String> workerNames = Arrays.stream(input.split(DELIMITER)).map(String::trim).toList();
-        validateWorkerNameCount(workerNames);
+        validate(workerNames);
         return workerNames;
     }
+
+    private void validate(List<String> workerNames) {
+        validateWorkerNameCount(workerNames);
+        workerNames.forEach(this::validateWorkerNameLength);
+        workerNames.forEach(this::validateWorkerNameExist);
+    }
+
 
     private void validateWorkerNameCount(List<String> workerNames) {
         if (workerNames.size() < MIN_WORKER_COUNT || workerNames.size() > MAX_WORKER_COUNT) {
@@ -41,4 +51,15 @@ public class OncallInputView {
         }
     }
 
+    private void validateWorkerNameLength(String workerName) {
+        if (workerName.length() > MAX_WORKER_NAME_LENGTH) {
+            throw new IllegalArgumentException(INVALID_WORKER_NAME_LENGTH.getMessage(MAX_WORKER_NAME_LENGTH));
+        }
+    }
+
+    private void validateWorkerNameExist(String workerName) {
+        if (workerName.isBlank() || workerName.isEmpty()) {
+            throw new IllegalArgumentException(INVALID_WORKER_NAME_EMPTY.getMessage());
+        }
+    }
 }
