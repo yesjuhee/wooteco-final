@@ -60,6 +60,9 @@ public class OncallBatch {
         int cur = date + 1;
         while (!oncallMonth.isHoliday(cur)) {
             cur++;
+            if (cur > oncallMonth.getLastDate()) {
+                cur = 1;
+            }
         }
         return cur;
     }
@@ -68,6 +71,9 @@ public class OncallBatch {
         int cur = date + 1;
         while (oncallMonth.isHoliday(cur)) {
             cur++;
+            if (cur > oncallMonth.getLastDate()) {
+                cur = 1;
+            }
         }
         return cur;
     }
