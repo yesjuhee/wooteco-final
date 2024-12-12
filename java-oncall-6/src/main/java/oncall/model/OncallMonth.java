@@ -42,4 +42,28 @@ public class OncallMonth {
     public int getLastDate() {
         return month.getLastDate();
     }
+
+    public Day getDay(Integer date) {
+        return dates.get(date);
+    }
+
+    public Month getMonth() {
+        return month;
+    }
+
+    public boolean isSpecialHoliday(int date) {
+        Day day = dates.get(date);
+        if (!day.isHoliday() && month.isSpecialHoliday(date)) {
+            return true;
+        }
+        return false;
+    }
+
+    public int getMonthNumber() {
+        return month.getMonth();
+    }
+
+    public String getDayString(int date) {
+        return dates.get(date).getName();
+    }
 }

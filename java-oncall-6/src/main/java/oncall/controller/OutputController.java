@@ -5,6 +5,7 @@ import oncall.model.OncallMonth;
 
 public class OutputController extends BaseController {
     public void displayResult(OncallBatch oncallBatch, OncallMonth oncallMonth) {
-        System.out.println("displayResult");
+        System.out.println();
+        resultView.displayResult(oncallBatch, oncallMonth);
     }
 }

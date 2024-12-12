@@ -2,6 +2,8 @@ package oncall.model;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+import java.util.Map.Entry;
+import java.util.Set;
 import oncall.enums.Day;
 
 public class OncallBatch {
@@ -39,7 +41,6 @@ public class OncallBatch {
         }
     }
 
-    // 맨 뒤의 순서였을 경우 예외 처리
     private void switchWorker(int date, OncallMonth oncallMonth) {
         int nextDate = findNextDate(date, oncallMonth);
         String prevWorker = batch.get(date);
@@ -69,5 +70,10 @@ public class OncallBatch {
             cur++;
         }
         return cur;
+    }
+
+
+    public Set<Entry<Integer, String>> getBatch() {
+        return batch.entrySet();
     }
 }
