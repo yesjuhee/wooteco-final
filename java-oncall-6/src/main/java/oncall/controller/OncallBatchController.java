@@ -1,23 +1,24 @@
 package oncall.controller;
 
 import java.util.List;
-import oncall.model.HolidayWorkers;
 import oncall.model.OncallBatch;
 import oncall.model.OncallMonth;
-import oncall.model.WeekdayWorkers;
+import oncall.model.Workers;
 
 public class OncallBatchController extends BaseController {
-    public void readWorkers(WeekdayWorkers weekdayWorkers, HolidayWorkers holidayWorkers) {
+    public void readWorkers(Workers weekdayWorkers, Workers holidayWorkers) {
         List<List<String>> workers = retryUntilSuccess(oncallInputView::readWorkers);
         List<String> weekdayWorkerInput = workers.get(0);
         List<String> holidayWorkerInput = workers.get(1);
+        weekdayWorkers.saveWorkers(weekdayWorkerInput);
+        holidayWorkers.saveWorkers(holidayWorkerInput);
     }
 
-    public void batchWeekWorkers(WeekdayWorkers weekdayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
-        System.out.println("batchWeekWorkers");
+    public void batchWeekWorkers(Workers weekdayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
+        oncallBatch.batchWeekdayWorker(weekdayWorkers);
     }
 
-    public void batchHolidayWorkers(HolidayWorkers holidayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
+    public void batchHolidayWorkers(Workers holidayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
         System.out.println("batchHolidayWorkers");
     }
 

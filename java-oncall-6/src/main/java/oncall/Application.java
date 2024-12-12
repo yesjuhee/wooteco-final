@@ -3,18 +3,17 @@ package oncall;
 import oncall.controller.MonthDayController;
 import oncall.controller.OncallBatchController;
 import oncall.controller.OutputController;
-import oncall.model.HolidayWorkers;
 import oncall.model.OncallBatch;
 import oncall.model.OncallMonth;
-import oncall.model.WeekdayWorkers;
+import oncall.model.Workers;
 
 public class Application {
     MonthDayController monthDayController = new MonthDayController();
     OncallBatchController oncallBatchController = new OncallBatchController();
     OutputController outputController = new OutputController();
-    WeekdayWorkers weekdayWorkers;
-    HolidayWorkers holidayWorkers;
-    OncallBatch oncallBatch;
+    Workers weekdayWorkers = new Workers();
+    Workers holidayWorkers = new Workers();
+    OncallBatch oncallBatch = new OncallBatch();
 
     public void run() {
         OncallMonth oncallMonth = monthDayController.readMonthDay();
