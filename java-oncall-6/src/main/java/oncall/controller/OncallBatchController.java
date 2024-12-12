@@ -19,7 +19,7 @@ public class OncallBatchController extends BaseController {
     }
 
     public void batchHolidayWorkers(Workers holidayWorkers, OncallMonth oncallMonth, OncallBatch oncallBatch) {
-        System.out.println("batchHolidayWorkers");
+        oncallBatch.batchHolidayWorker(holidayWorkers, oncallMonth);
     }
 
     public void handleConsecutiveWorkers(OncallBatch oncallBatch, OncallMonth oncallMonth) {
