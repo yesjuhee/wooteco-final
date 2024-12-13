@@ -24,13 +24,15 @@ public enum Day {
     public static Day getDayByName(String day) {
         return Arrays.stream(Day.values())
                 .filter(d -> d.getName().equals(day))
-                .findAny().get();
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("No Day found with name: " + day));
     }
 
     public static Day getDayByOrder(int order) {
         return Arrays.stream(Day.values())
                 .filter(d -> d.getOrder() == order)
-                .findAny().get();
+                .findAny()
+                .orElseThrow(() -> new IllegalArgumentException("No Day found with order: " + order));
     }
 
     public String getName() {
